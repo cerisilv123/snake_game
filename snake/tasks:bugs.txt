@@ -1,0 +1,10 @@
+/*
+
+Tasks :
+1 - Add a start menu - add controls
+2 - add a quit menu
+3 - add a high score
+
+Bugs :
+1 - fruit sometimes spawns on snake
+*/
