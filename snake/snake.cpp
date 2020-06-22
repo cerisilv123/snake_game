@@ -1,8 +1,10 @@
 
 #include <iostream>
+#include <fstream>
 
 #include "snake.hpp"
 #include "fruit.hpp"
+#include "game.hpp"
 
 snake::snake() {
     this->add_block = false; 
@@ -105,13 +107,16 @@ bool snake::out_of_bounds() {
     bool result = false;
     if (head_coords.x <= -30 || head_coords.y <= -30) {
         result = true;
+        this->write_score();
     }
     if (head_coords.x >= 600 || head_coords.y >= 600) {
         result = true;
+        this->write_score();
     }
     for (size_t i = 1; i < num; i++) {
        if (head_coords.x == coords[i].x && head_coords.y == coords[i].y) {
             result = true;
+           this->write_score(); 
        }
     }
     return result; 
@@ -139,8 +144,24 @@ bool snake::has_collided() {
                 count++;
             }
         }
-    if (count == 2)
+    if (count == 2) {
         result = true;
-    return result; 
+        this->write_score();
+    }
+    return result;
+}
+
+void snake::write_score() { // NEED TO EDIT
+    std::fstream out_file;
+    out_file.open("score.txt");
+    if (!out_file) {
+        std::cout << "Error Accessing score file" << std::endl;
+    }
+    std::string word;
+    out_file >> word;
+    if (word != " ") {
+        out_file << this->num << std::endl;
+    }
+    out_file.close();
 }
 

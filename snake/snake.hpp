@@ -25,6 +25,7 @@ public:
     bool snake_ate(sf::Vector2f &fruit_coords, bool &fruit_active);
     bool add_block;
     bool has_collided();
+    void write_score(); 
 };
 
 #endif /* snake_hpp */

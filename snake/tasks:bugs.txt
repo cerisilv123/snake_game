@@ -1,10 +1,12 @@
 /*
 
 Tasks :
-1 - Add a start menu - add controls
-2 - add a quit menu
-3 - add a high score
+1 - Add a start menu - DONE
+3 - add a high score - IN PROCESS
+4 - Add sound / Music
+5 - loop back to menu once player has died
 
 Bugs :
 1 - fruit sometimes spawns on snake
+
 */
