@@ -49,7 +49,8 @@
 		D4623C6C249E53B70044CD21 /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		D4623C6D249E53B70044CD21 /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		D4765183249FF4D4005FEAF2 /* snake_font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = snake_font.ttf; sourceTree = "<group>"; };
-		D4765184249FFEA5005FEAF2 /* score.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = score.txt; sourceTree = "<group>"; };
+		D476518824A1445D005FEAF2 /* control_font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = control_font.ttf; sourceTree = "<group>"; };
+		D476518A24A14DED005FEAF2 /* relax-song.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "relax-song.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +100,8 @@
 				D4623C6C249E53B70044CD21 /* game.cpp */,
 				D4623C6D249E53B70044CD21 /* game.hpp */,
 				D4765183249FF4D4005FEAF2 /* snake_font.ttf */,
-				D4765184249FFEA5005FEAF2 /* score.txt */,
+				D476518824A1445D005FEAF2 /* control_font.ttf */,
+				D476518A24A14DED005FEAF2 /* relax-song.wav */,
 			);
 			path = snake;
 			sourceTree = "<group>";

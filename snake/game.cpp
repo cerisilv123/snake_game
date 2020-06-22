@@ -1,6 +1,7 @@
 
 #include "game.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -19,6 +20,12 @@ void game::display_menu(sf::RenderWindow &window) {
         std::cerr << "Error loading font" << std::endl;
         window.close();
     }
+    sf::Font font2;
+    if (!font2.loadFromFile("control_font.ttf")) {
+        std::cerr << "Error loading font" << std::endl;
+        window.close();
+    }
+    
     sf::Text text; // Header
     text.setFont(font);
     text.setString("Snake");
@@ -30,16 +37,27 @@ void game::display_menu(sf::RenderWindow &window) {
     
     sf::Text spacebar;
     spacebar.setFont(font);
-    spacebar.setString("Press Spacebar to Start!");
-    spacebar.setCharacterSize(50);
+    spacebar.setString("Press Spacebar to Play!");
+    spacebar.setCharacterSize(55);
     spacebar.setFillColor(sf::Color::White);
     spacebar.setOutlineColor(sf::Color::Green);
-    spacebar.setPosition(sf::Vector2f(300,520));
+    spacebar.setOutlineThickness(0.5);
+    spacebar.setPosition(sf::Vector2f(300,540));
     sf::FloatRect width2 = spacebar.getLocalBounds();
     spacebar.setOrigin(width2.width / 2, width2.width / 2);
     
+    sf::Text controls;
+    controls.setFont(font2);
+    controls.setString("Controls = Arrows : UP, LEFT, DOWN, RIGHT");
+    controls.setCharacterSize(25);
+    controls.setFillColor(sf::Color::White);
+    controls.setPosition(sf::Vector2f(300, 700));
+    sf::FloatRect width3 = controls.getLocalBounds();
+    controls.setOrigin(width3.width / 2, width3.width / 2);
+    
     window.draw(text);
-    window.draw(spacebar); 
+    window.draw(spacebar);
+    window.draw(controls);
 }
 
 void game::start_game(sf::RenderWindow &window) {
@@ -62,13 +80,13 @@ void game::start_game(sf::RenderWindow &window) {
 void game::play_game() {
     sf::RenderWindow window (sf::VideoMode(600, 600), "Snake Game");
     
-    sf::Clock clock;
-    float min_time = 0.12;
-              
     grid grid;
     snake snake;
     fruit fruit;
-       
+    
+    sf::Clock clock;
+    float min_time = 0.12;
+    
        while (window.isOpen()) {
            // Handle Events
            sf::Event event;
@@ -77,7 +95,6 @@ void game::play_game() {
                    window.close();
                }
            }
-           
            this->start_game(window);
            
            float delta_time = clock.getElapsedTime().asSeconds(); // Get time elapsed
@@ -93,6 +110,8 @@ void game::play_game() {
                     snake.draw_snake(window);
                     snake.player_input(window);
                     snake.snake_ate(fruit.fruit_coords, fruit.active);
+                     
+                    std::cout << snake.num << std::endl; 
                    
                     if (fruit.active == false) {
                         fruit.spawn_fruit(snake.return_coords(), window);
@@ -103,10 +122,11 @@ void game::play_game() {
                     window.display();
                     clock.restart();
                  }
-//                 else if (snake.out_of_bounds() == true || snake.has_collided() == true) {
-//                     this->active = false;
-//                     this->play_game();
-//                 }
+                 else if (snake.out_of_bounds() == true || snake.has_collided() == true) {
+                     window.close();
+                     this->active = false;
+                     this->play_game();
+                 }
              }
        }
 }
