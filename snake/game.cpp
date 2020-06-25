@@ -5,8 +5,10 @@
 #include <iostream>
 #include <fstream>
 
+// ===== STRUCT TO CONTROL FLOW OF THE GAME ===== //
+
 game::game() {
-    this->active = false;
+    this->active = false; //
     this->background.setSize(sf::Vector2f(600,600));
     this->background.setPosition(sf::Vector2f(0,0));
     this->background.setFillColor(sf::Color::Black);
@@ -71,7 +73,7 @@ void game::start_game(sf::RenderWindow &window) {
            }
         this->display_menu(window);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
-            this->active = true; 
+            this->active = true; // Game started
         }
         window.display(); 
     }
@@ -80,12 +82,13 @@ void game::start_game(sf::RenderWindow &window) {
 void game::play_game() {
     sf::RenderWindow window (sf::VideoMode(600, 600), "Snake Game");
     
+    // Creating objects
     grid grid;
     snake snake;
     fruit fruit;
     
     sf::Clock clock;
-    float min_time = 0.12;
+    float min_time = 0.12; // This will decrease and speed of snake will get faster as snake grows
     
        while (window.isOpen()) {
            // Handle Events
@@ -95,6 +98,8 @@ void game::play_game() {
                    window.close();
                }
            }
+           
+           // Start game
            this->start_game(window);
            
            float delta_time = clock.getElapsedTime().asSeconds(); // Get time elapsed
@@ -125,7 +130,7 @@ void game::play_game() {
                  else if (snake.out_of_bounds() == true || snake.has_collided() == true) {
                      window.close();
                      this->active = false;
-                     this->play_game();
+                     this->play_game(); // Start game again -> back to menu
                  }
              }
        }

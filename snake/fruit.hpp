@@ -10,9 +10,9 @@ class fruit {
 private:
     sf::RectangleShape fruit_block;
 public:
-    sf::Vector2f fruit_coords;
-    bool active;
     fruit();
+    bool active;
+    sf::Vector2f fruit_coords;
     void spawn_fruit(std::deque<sf::Vector2f> coords, sf::RenderWindow &window);
     void draw_fruit(sf::RenderWindow &window);
 };

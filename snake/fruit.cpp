@@ -17,15 +17,25 @@ void fruit::spawn_fruit(std::deque<sf::Vector2f> coords, sf::RenderWindow &windo
     while (result == false) {
     int randx = rand() % 600;
     int randy = rand() % 600;
-        if (randx % 30 == 0 && randy % 30 == 0) {
+        if (randx % 30 == 0 && randy % 30 == 0) { // Need spawn to be a multiple of 30 for X and Y coordinates
             fruit_coords.x = randx;
             fruit_coords.y = randy;
-           for (size_t i = 0; i < coords.size(); i++) {
-               if (fruit_coords != coords[i]) {
-                   result = true;
-                   this->active = true;
+            int count {0};
+            for (size_t i = 0; i < coords.size(); i++) {
+               if (fruit_coords == coords[i]) {
+                   count --;
                }
-           }
+               else if (fruit_coords != coords[i]) {
+                   count ++;
+               }
+            }
+            if (count == coords.size()) {
+                result = true;
+                this->active = true; // Can spawn fruit
+            }
+            else if (count != coords.size()) {
+                result = false; // Can't spawn fruit
+            }
         }
     }
 }

@@ -46,11 +46,11 @@ void snake::player_input(sf::RenderWindow &window) {
 
 void snake::move_snake() {
     if (this->dir == "LEFT") {
-        if (add_block == true) {
+        if (add_block == true) { // If snake has eaten = dont pop off the back
             head_coords.x -= 30;
             coords.push_front(head_coords);
-            num++;
-            add_block = false;
+            num++; // increase number of blocks
+            add_block = false; // set boolean back to false until snake has eaten again
         }
         if (add_block == false) {
         head_coords.x -= 30;
@@ -60,46 +60,60 @@ void snake::move_snake() {
     }
     if (this->dir == "RIGHT") {
         if (add_block == true) {
-                   head_coords.x += 30;
-                   coords.push_front(head_coords);
-                   num++;
-                   add_block = false;
-               }
-               if (add_block == false) {
-               head_coords.x += 30;
-                   coords.push_front(head_coords);
-                   coords.pop_back();
-               }
+            head_coords.x += 30;
+            coords.push_front(head_coords);
+            num++;
+            add_block = false;
+        }
+        if (add_block == false) {
+            head_coords.x += 30;
+            coords.push_front(head_coords);
+            coords.pop_back();
+        }
     }
     if (this->dir == "UP") {
          if (add_block == true) {
-                  head_coords.y -= 30;
-                  coords.push_front(head_coords);
-                  num++;
-                  add_block = false;
-              }
-              if (add_block == false) {
-              head_coords.y -= 30;
-                  coords.push_front(head_coords);
-                  coords.pop_back();
-              }
+            head_coords.y -= 30;
+            coords.push_front(head_coords);
+            num++;
+            add_block = false;
+         }
+         if (add_block == false) {
+            head_coords.y -= 30;
+            coords.push_front(head_coords);
+            coords.pop_back();
+         }
     }
     if (this->dir == "DOWN") {
-         if (add_block == true) {
-                  head_coords.y += 30;
-                  coords.push_front(head_coords);
-                  num++;
-                  add_block = false;
-              }
-              if (add_block == false) {
-              head_coords.y += 30;
-                  coords.push_front(head_coords);
-                  coords.pop_back();
-              }
+        if (add_block == true) {
+            head_coords.y += 30;
+            coords.push_front(head_coords);
+            num++;
+            add_block = false;
+        }
+        if (add_block == false) {
+            head_coords.y += 30;
+            coords.push_front(head_coords);
+            coords.pop_back();
+        }
     }
 }
 
-bool snake::out_of_bounds() {
+std::deque<sf::Vector2f> snake::return_coords() { // Return snakes coordinates - to be used in other class methods
+    return coords; 
+}
+
+bool snake::snake_ate(sf::Vector2f &fruit_coords, bool &fruit_active) {
+    bool result = false; 
+    if (this->head_coords == fruit_coords) {
+        result = true;
+        fruit_active = false;
+        add_block = true; // move snake function now knows not to pop off the back and to increase num by 1
+    }
+    return result;
+}
+
+bool snake::out_of_bounds() { // Check is snake is snake has left the screen
     bool result = false;
     if (head_coords.x <= -30 || head_coords.y <= -30) {
         result = true;
@@ -112,24 +126,10 @@ bool snake::out_of_bounds() {
             result = true;
        }
     }
-    return result; 
-}
-
-std::deque<sf::Vector2f> snake::return_coords() {
-    return coords; 
-}
-
-bool snake::snake_ate(sf::Vector2f &fruit_coords, bool &fruit_active) {
-    bool result = false; 
-    if (this->head_coords == fruit_coords) {
-        result = true;
-        fruit_active = false;
-        add_block = true; 
-    }
     return result;
 }
 
-bool snake::has_collided() {
+bool snake::has_collided() { // Check if snake has collided with itself
     bool result = false;
     int count = 0;
         for (size_t j = 1; j < num; j++) {
@@ -138,7 +138,7 @@ bool snake::has_collided() {
             }
         }
     if (count == 2) {
-        result = true;
+        result = true; 
     }
     return result;
 }

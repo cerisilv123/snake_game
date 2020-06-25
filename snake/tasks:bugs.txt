@@ -1,12 +1,9 @@
 /*
 
 Tasks :
-1 - Add a start menu - DONE
-3 - add a high score - IN PROCESS
-4 - Add sound / Music
-5 - loop back to menu once player has died
+1 - add a high score
+2 - Tidy up code
 
 Bugs :
-1 - fruit sometimes spawns on snake
 
 */
