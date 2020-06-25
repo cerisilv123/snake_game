@@ -45,7 +45,6 @@
 		D4623C63249CD0390044CD21 /* snake.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = snake.hpp; sourceTree = "<group>"; };
 		D4623C65249CE2890044CD21 /* fruit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fruit.cpp; sourceTree = "<group>"; };
 		D4623C66249CE2890044CD21 /* fruit.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fruit.hpp; sourceTree = "<group>"; };
-		D4623C68249E05F30044CD21 /* tasks:bugs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "tasks:bugs.txt"; sourceTree = "<group>"; };
 		D4623C6C249E53B70044CD21 /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
 		D4623C6D249E53B70044CD21 /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		D4765183249FF4D4005FEAF2 /* snake_font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = snake_font.ttf; sourceTree = "<group>"; };
@@ -96,7 +95,6 @@
 				D4623C63249CD0390044CD21 /* snake.hpp */,
 				D4623C65249CE2890044CD21 /* fruit.cpp */,
 				D4623C66249CE2890044CD21 /* fruit.hpp */,
-				D4623C68249E05F30044CD21 /* tasks:bugs.txt */,
 				D4623C6C249E53B70044CD21 /* game.cpp */,
 				D4623C6D249E53B70044CD21 /* game.hpp */,
 				D4765183249FF4D4005FEAF2 /* snake_font.ttf */,

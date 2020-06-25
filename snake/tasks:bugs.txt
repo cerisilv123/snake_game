@@ -1,9 +1,0 @@
-/*
-
-Tasks :
-1 - add a high score
-2 - Tidy up code
-
-Bugs :
-
-*/
